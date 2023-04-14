@@ -9,5 +9,9 @@ package servicos;
  * @author 182120036
  */
 public class ServicosFactory {
+    private static PessoaServicos pessoaS = new PessoaServicos();
     
+    public static PessoaServicos getPessoaServicos(){
+        return pessoaS;
+    }
 }
