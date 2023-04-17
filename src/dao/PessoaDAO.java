@@ -88,8 +88,7 @@ public class PessoaDAO {
     public void atualizarPessoaDAO(Pessoa pVO){
         try{
             Connection con = Conexao.getConexao();
-            String sql = "update pessoas set nome = ?, endereco = ?, telefone = ?"
-                    + "where cpf = ?";
+            String sql = "update pessoas set nome = ?, endereco = ?, telefone = ? where cpf = ?";
             PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, pVO.getNome());
             pst.setString(2, pVO.getEndereco());
