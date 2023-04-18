@@ -24,7 +24,7 @@ public class PessoaServicos {
         return pDAO.getPessoas();
     }
     
-    public Pessoa getPessoaByPessoa(String cpf){
+    public Pessoa getPessoaByDoc(String cpf){
         PessoaDAO pDAO = DAOFactory.getPessoaDAO();
         return pDAO.getPessoaByDoc(cpf);
     }
