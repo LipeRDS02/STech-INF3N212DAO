@@ -4,11 +4,16 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/182120036/Documents/NetBeansProjects/INF3N212_POODAO/src/servicos/PessoaServicos.java</file>
+            <file>file:/C:/Users/182120036/Documents/NetBeansProjects/INF3N212_POODAO/src/controller/CPessoa.java</file>
             <file>file:/C:/Users/182120036/Documents/NetBeansProjects/INF3N212_POODAO/src/dao/PessoaDAO.java</file>
             <file>file:/C:/Users/182120036/Documents/NetBeansProjects/INF3N212_POODAO/src/dao/DAOFactory.java</file>
             <file>file:/C:/Users/182120036/Documents/NetBeansProjects/INF3N212_POODAO/src/servicos/ServicosFactory.java</file>
+            <file>file:/C:/Users/182120036/Documents/NetBeansProjects/INF3N212_POODAO/src/controller/CCarro.java</file>
+            <file>file:/C:/Users/182120036/Documents/NetBeansProjects/INF3N212_POODAO/src/servicos/CarroServicos.java</file>
+            <file>file:/C:/Users/182120036/Documents/NetBeansProjects/INF3N212_POODAO/src/model/Pessoa.java</file>
             <file>file:/C:/Users/182120036/Documents/NetBeansProjects/INF3N212_POODAO/src/conexao/Conexao.java</file>
             <file>file:/C:/Users/182120036/Documents/NetBeansProjects/INF3N212_POODAO/src/inf3n212/INF3N212.java</file>
+            <file>file:/C:/Users/182120036/Documents/NetBeansProjects/INF3N212_POODAO/src/dao/CarroDAO.java</file>
         </group>
     </open-files>
 </project-private>

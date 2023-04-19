@@ -46,7 +46,8 @@ public class CarroDAO {
         
         try {
             Connection con = Conexao.getConexao();
-            String sql = "select c.*, p.cpf from carros c join pessoas p using(idpessoa)";
+            String sql = "select c.*, p.cpf as cpf from carros c "
+                    + "join pessoas p on c.proprietario = p.idPessoa";
             PreparedStatement pst = con.prepareStatement(sql);
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
@@ -71,6 +72,75 @@ public class CarroDAO {
         }
         
         return carros;
+    }
+    
+    public Carro getCarroByDoc(String placa){
+        Carro c = new Carro();
+        try {
+            Connection con = Conexao.getConexao();
+            String sql = "select c.*, p.cpf as cpf from carros c "
+                    + "join pessoas p on c.proprietario = p.idPessoa "
+                    + "where placa = ?";
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(1, placa);
+            ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                c.setPlaca(rs.getString("placa"));
+                c.setMarca(rs.getString("marca"));
+                c.setModelo(rs.getString("modelo"));
+                c.setAnoFab(rs.getInt("anofab"));
+                c.setAnoMod(rs.getInt("anomod"));
+                c.setTpCambio(rs.getString("tpCambio"));
+                c.setCombustivel(rs.getString("combustivel"));
+                PessoaServicos pessoaS = ServicosFactory.getPessoaServicos();
+                c.setProprietario(pessoaS.getPessoaByDoc(rs.getString("cpf")));   
+            }
+        } catch (SQLException e) {
+            System.out.println("Erro ao buscar placa.\n" 
+                    + e.getMessage());
+        }
+        return c;
+    }
+    
+    public void atualizarCarro(Carro cVO){
+        try {
+            Connection con = Conexao.getConexao();
+            String sql = "update carros set cor = ?, tpCambio = ?, combustivel = ?, "
+                    + "proprietario = ? where placa = ?";
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(1, cVO.getCor());
+            pst.setString(2, cVO.getTpCambio());
+            pst.setString(3, cVO.getCombustivel());
+            PessoaServicos pessoaS = ServicosFactory.getPessoaServicos();
+            pst.setInt(4, pessoaS.getPessoaByDoc(cVO.getProprietario().getCpf()).getIdPessoa());
+            pst.setString(5, cVO.getPlaca());
+            pst.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Erro ao atualizar placa.\n" 
+                    + e.getMessage());
+        }
+    }
+    
+    public void deletarCarro (String placa){
+        try {
+            Connection con = Conexao.getConexao();
+            String sql = "delete from where placa = ?";
+            PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(1, placa);
+            pst.executeUpdate();
+            
+        } catch (Exception e) {
+            System.out.println("Erro ao deletar placa.\n" 
+                    + e.getMessage());
+        }
+    }
+
+    public void atualizarCarroDAO(Carro cVO) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public void deletarCarroDAO(String placa) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
 }
